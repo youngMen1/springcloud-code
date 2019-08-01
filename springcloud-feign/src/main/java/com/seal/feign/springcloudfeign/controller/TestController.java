@@ -29,7 +29,7 @@ public class TestController {
     @ApiOperation(value = "测试接口", notes = "测试接口")
     public String home(@RequestParam String name) {
         System.out.println(testService.getHello(name));
-        return "success";
+        return testService.getHello(name);
     }
 
 }

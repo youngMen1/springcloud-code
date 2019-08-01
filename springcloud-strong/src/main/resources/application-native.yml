@@ -6,7 +6,7 @@ spring:
     name: springcloud-strong
 eureka:
   instance:
-    # 其中获取ip，SpringCloud2.0版本对应的key值为${spring.cloud.clent.ip-address},网上流传大多为${spring.cloud.clent.ipAddress}
+    # 其中获取ip，SpringCloud2.0版本对应的key值为${spring.cloud.clent.ip-address},而不是网上流传大多为${spring.cloud.clent.ipAddress}
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
   client:
     serviceUrl:
