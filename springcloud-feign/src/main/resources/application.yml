@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: springcloud-feign
+# D版本的Spring Cloud之后，它没有默认打开
+feign:
+  hystrix:
+    enabled: true
 eureka:
   instance:
     # 其中获取ip，SpringCloud2.0版本对应的key值为${spring.cloud.clent.ip-address},而不是网上流传大多为${spring.cloud.clent.ipAddress}

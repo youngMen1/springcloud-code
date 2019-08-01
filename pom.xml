@@ -20,8 +20,9 @@
     <modules>
         <module>springcloud-common</module>
         <module>springcloud-eureka</module>
-        <module>springcloud-feign</module>
         <module>springcloud-rest</module>
+        <module>springcloud-feign</module>
+        <module>springcloud-hystrix</module>
         <module>springcloud-strong</module>
     </modules>
 
