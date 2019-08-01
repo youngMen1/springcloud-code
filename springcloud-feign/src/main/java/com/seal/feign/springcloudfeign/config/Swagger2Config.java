@@ -34,7 +34,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("项目")
+                .title("feign")
                 .description("https://github.com/springcloud-code/springcloud-feign")
                 .version("1.0")
                 .build();

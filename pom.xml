@@ -18,8 +18,9 @@
     </parent>
 
     <modules>
-        <module>springcloud-eureka</module>
         <module>springcloud-common</module>
+        <module>springcloud-eureka</module>
+        <module>springcloud-feign</module>
         <module>springcloud-rest</module>
         <module>springcloud-strong</module>
     </modules>
