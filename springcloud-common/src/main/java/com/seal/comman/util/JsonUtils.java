@@ -18,7 +18,7 @@ import java.util.List;
  * @date-time 2019/8/1 11:56
  * @description
  **/
-public class JSONUtils {
+public class JsonUtils {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -34,7 +34,7 @@ public class JSONUtils {
     public String toJSON(Object object) {
         String jsonContent = null;
         try {
-            // 对象转为字符串
+            // 对象转为字符串,Map转为字符串
             jsonContent = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             if (logger.isErrorEnabled()) {
