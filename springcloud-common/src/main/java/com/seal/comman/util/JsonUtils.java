@@ -31,7 +31,7 @@ public class JsonUtils {
     }
 
 
-    public String toJSON(Object object) {
+    public String toJson(Object object) {
         String jsonContent = null;
         try {
             // 对象转为字符串,Map转为字符串
