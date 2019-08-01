@@ -1,0 +1,10 @@
+
+server:
+  port: 10008
+spring:
+  application:
+    name: springcloud-strong
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://211.159.189.77:22001/eureka/,http://134.175.12.243:22002/eureka/
