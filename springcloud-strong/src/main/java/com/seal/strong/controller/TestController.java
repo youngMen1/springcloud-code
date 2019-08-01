@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/cloud")
-@Api(value = "TestController", tags = "测试管理")
+@Api(value = "controller", tags = "测试管理")
 public class TestController {
 
     @PostMapping("/hello")

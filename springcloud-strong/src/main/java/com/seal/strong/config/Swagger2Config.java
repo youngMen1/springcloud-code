@@ -26,7 +26,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.seal.strong.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.seal.strong.controller"))
                 .paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .paths(PathSelectors.any())
                 .build();
@@ -35,7 +35,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("项目")
-                .description("https://github.com/springcloud-code/springcloud-eureka")
+                .description("https://github.com/springcloud-code/springcloud-strong")
                 .version("1.0")
                 .build();
     }
