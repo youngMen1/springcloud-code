@@ -2,6 +2,7 @@ package com.seal.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * @author zhiqiang.feng
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date-time 2019/7/31 16:40
  * @description 高可用注册中心
  **/
+@EnableEurekaServer
 @SpringBootApplication
 public class SpringcloudEurekaApplication {
 
