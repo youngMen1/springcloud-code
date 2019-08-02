@@ -3,10 +3,7 @@ package com.seal.strong.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhiqiang.feng
@@ -22,7 +19,13 @@ public class TestController {
 
     @PostMapping("/hello")
     @ApiOperation(value = "测试接口", notes = "测试接口")
-    public String home(@RequestParam String name) {
+    public String hello(@RequestParam String name) {
+        return "hi " + name + ",i am from port:8080";
+    }
+
+    @GetMapping("/test")
+    @ApiOperation(value = "测试接口", notes = "测试接口")
+    public String test(@RequestParam String name) {
         return "hi " + name + ",i am from port:8080";
     }
 
