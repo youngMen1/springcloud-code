@@ -1,0 +1,13 @@
+server:
+  port: 1007
+spring:
+  application:
+    name: springcloud-hystrixdashboard
+eureka:
+  instance:
+    # 其中获取ip，SpringCloud2.0版本对应的key值为${spring.cloud.clent.ip-address},而不是网上流传大多为${spring.cloud.clent.ipAddress}
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://211.159.189.77:22001/eureka/,http://134.175.12.243:22002/eureka/
+

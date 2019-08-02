@@ -53,6 +53,12 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <!--WEB-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!--swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -72,11 +78,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!--WEB-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
 
 
         <dependency>
