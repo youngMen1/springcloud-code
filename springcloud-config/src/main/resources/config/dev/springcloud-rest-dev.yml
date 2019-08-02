@@ -1,6 +1,6 @@
-
 server:
   port: 1004
+
 spring:
   application:
     name: springcloud-rest

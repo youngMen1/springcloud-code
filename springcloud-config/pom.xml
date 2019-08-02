@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.seal.strong</groupId>
-    <artifactId>springcloud-strong</artifactId>
+    <groupId>com.seal.config</groupId>
+    <artifactId>springcloud-config</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>springcloud-strong</name>
-    <description>服务项目</description>
+    <name>springcloud-config</name>
+    <description>分布式配置中心(Spring Cloud Config)</description>
 
     <parent>
         <artifactId>springcloud-code</artifactId>
@@ -22,28 +22,14 @@
     </properties>
 
     <dependencies>
-        <!--配置中心客户端-->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>

@@ -1,0 +1,34 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: springcloud-config
+  profiles:
+    active: native
+  cloud:
+    config:
+      # 配置仓库的分支
+      # label: master
+      server:
+#         git:
+#           # 配置git仓库地址
+#           uri: https://github.com/forezp/SpringcloudConfig/
+#           # 配置仓库路径
+#           searchPaths: respo
+#           # 访问git仓库的用户名
+#           username:
+#           # 访问git仓库的用户密码
+#           password:
+         # 读本地配置
+         native:
+           search-locations: classpath:/config/dev,classpath:/config/sit,classpath:/config/prd
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    # 其中获取ip，SpringCloud2.0版本对应的key值为${spring.cloud.clent.ip-address},而不是网上流传大多为${spring.cloud.clent.ipAddress}
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://211.159.189.77:22001/eureka/,http://134.175.12.243:22002/eureka/

@@ -1,0 +1,32 @@
+server:
+  port: 1008
+#@activatedEnv@
+spring:
+  application:
+    name: springcloud-rest
+  profiles:
+    active: dev
+  # 配置中心
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: springcloud-config
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+  client:
+    service-url:
+      defaultZone: http://211.159.189.77:22001/eureka/,http://134.175.12.243:22002/eureka/
+    registry-fetch-interval-seconds: 5
+
+# 服务刷新时间 2s
+ribbon:
+  ServerListRefreshInterval: 2000

@@ -11,8 +11,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
  * @date-time 2019/7/31 16:40
  * @description 路由网关(zuul)
  **/
-@EnableEurekaClient
 @EnableZuulProxy
+@EnableEurekaClient
 @SpringBootApplication
 public class SpringcloudZuulApplication {
 
