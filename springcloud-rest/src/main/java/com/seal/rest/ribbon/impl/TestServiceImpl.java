@@ -31,7 +31,7 @@ public class TestServiceImpl implements TestService {
     @Override
     @HystrixCommand(fallbackMethod = "testError")
     public String testService(String name) {
-        return restTemplate.getForObject("http://SPRINGCLOUD-STRONG/api/cloud/test?name=" + name, String.class);
+        return restTemplate.getForObject("http://SPRINGCLOUD-STRONG/api/strong/test?name=" + name, String.class);
     }
 
 

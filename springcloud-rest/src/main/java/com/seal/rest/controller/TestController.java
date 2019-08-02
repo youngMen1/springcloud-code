@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @Slf4j
 @RestController
-@RequestMapping(value = "/api/cloud")
+@RequestMapping(value = "/api/ribbon")
 @Api(value = "TestController", tags = "测试管理")
 public class TestController {
 

@@ -23,7 +23,9 @@
         <module>springcloud-rest</module>
         <module>springcloud-feign</module>
         <module>springcloud-hystrix</module>
+        <module>springcloud-zuul</module>
         <module>springcloud-strong</module>
+
     </modules>
 
     <properties>

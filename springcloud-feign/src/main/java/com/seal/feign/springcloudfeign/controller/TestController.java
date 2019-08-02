@@ -5,10 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhiqiang.feng
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @Slf4j
 @RestController
-@RequestMapping(value = "/api/cloud")
+@RequestMapping(value = "/api/feign")
 @Api(value = "controller", tags = "测试管理")
 public class TestController {
 
@@ -29,7 +26,13 @@ public class TestController {
     @ApiOperation(value = "测试接口", notes = "测试接口")
     public String home(@RequestParam String name) {
         System.out.println(testService.getHello(name));
+
         return testService.getHello(name);
     }
 
+    @GetMapping("/hello")
+    @ApiOperation(value = "测试接口", notes = "测试接口")
+    public String hello(@RequestParam String name) {
+        return "name=" + name;
+    }
 }

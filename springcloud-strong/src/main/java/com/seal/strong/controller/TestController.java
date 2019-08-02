@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @Slf4j
 @RestController
-@RequestMapping(value = "/api/cloud")
+@RequestMapping(value = "/api/strong")
 @Api(value = "controller", tags = "测试管理")
 public class TestController {
 
@@ -28,6 +28,5 @@ public class TestController {
     public String test(@RequestParam String name) {
         return "hi " + name + ",i am from port:8080";
     }
-
 
 }

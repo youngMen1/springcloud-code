@@ -22,7 +22,7 @@ public interface TestService {
      * @param name
      * @return
      */
-    @PostMapping(value = "/api/cloud/hello")
+    @PostMapping(value = "/api/strong/hello")
     String getHello(@RequestParam(value = "name") String name);
 
 }
