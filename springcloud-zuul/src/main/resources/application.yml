@@ -10,14 +10,14 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://211.159.189.77:22001/eureka/,http://134.175.12.243:22002/eureka/
-
+ # 以/api/feign开头的请求都转发给service-ribbon服务；以/api/strong/开头的请求都转发给service-feign服务；
 zuul:
   routes:
-    feign:
+    springcloud-feign:
       path: /api/feign/**
       serviceId: springcloud-feign
       stripPrefix: false
-    strong:
+    springcloud-strong:
       path: /api/strong/**
       serviceId: springcloud-strong
       stripPrefix: false
