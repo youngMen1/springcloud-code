@@ -1,0 +1,108 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: after_route
+---
+## id标签配置的是router的id，每个router都需要一个唯一的id，uri配置的是将请求路由到哪里，本案例全部路由到http://httpbin.org:80/get。
+## AfterRoutePredicateFactory，可配置一个时间，当请求的时间在配置时间之后，才交给 router去处理。否则则报错，不通过路由。
+## predicates：
+# After=2017-01-20T17:42:47.789-07:00[America/Denver] 会被解析成PredicateDefinition对象 （name =After ，args= 2017-01-20T17:42:47.789-07:00[America/Denver]）。
+# 在这里需要注意的是predicates的After这个配置，遵循的契约大于配置的思想，
+# 它实际被AfterRoutePredicateFactory这个类所处理，这个After就是指定了它的Gateway web handler类为AfterRoutePredicateFactory，
+# 同理，其他类型的predicate也遵循这个规则。
+spring:
+  profiles: after_route
+  cloud:
+    gateway:
+      routes:
+      - id: after_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+---
+# ，一个是header名，另外一个header值，该值可以是一个正则表达式。当此断言匹配了请求的header名和值时，断言通过，进入到router的规则中去
+spring:
+  profiles: header_route
+  cloud:
+    gateway:
+      routes:
+      - id: header_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Header=X-Request-Id, \d+
+
+---
+# 请求带有cookie名为name, cookie值为forezp 的请求将都会转发到uri
+spring:
+  profiles: cookie_route
+  cloud:
+    gateway:
+      routes:
+      - id: cookie_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Cookie=name, forezp
+
+---
+# 请求头中含有Host为fangzhipeng.com的请求将会被路由转发转发到配置的uri
+spring:
+  profiles: host_route
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Host=**.fangzhipeng.com
+
+---
+# 需要一个参数，即请求的类型。比如GET类型的请求都转发到此路由
+spring:
+  profiles: method_route
+  cloud:
+    gateway:
+      routes:
+      - id: method_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Method=GET
+
+---
+# 一个spel表达式，应用匹配路径。所有的请求路径满足/foo/{segment}的请求将会匹配并被路由，比如/foo/1 、/foo/bar的请求，将会命中匹配，并成功转发。
+spring:
+  profiles: path_route
+  cloud:
+    gateway:
+      routes:
+      - id: path_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Path=/foo/{segment}
+
+---
+# 配置了请求中含有参数foo，并且foo的值匹配ba.，则请求命中路由，比如一个请求中含有参数名为foo，值的为bar，能够被正确路由转发。例如:localhost:8081?foo=bar
+spring:
+  profiles: query_route
+  cloud:
+    gateway:
+      routes:
+      - id: query_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Query=foo, ba.
+
+---
+# 也可以只填一个参数，填一个参数时，则只匹配参数名，即请求的参数中含有配置的参数名，则命中路由。
+spring:
+  profiles: query_route
+  cloud:
+    gateway:
+      routes:
+      - id: query_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Query=foo
+
+
+
