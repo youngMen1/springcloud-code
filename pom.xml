@@ -18,6 +18,7 @@
     </parent>
 
     <modules>
+
         <module>springcloud-common</module>
         <module>springcloud-eureka</module>
         <module>springcloud-rest</module>
