@@ -19,7 +19,7 @@ eureka:
     service-url:
        defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:22001}/eureka/
 server:
-  port: ${SERVER_PORT:22001}
+  port: ${SERVER_PORT:22002}
 
 logging:
   file: /var/log/hotel-eureka/inf-eureka.log

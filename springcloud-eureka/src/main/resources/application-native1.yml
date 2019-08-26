@@ -1,9 +1,10 @@
-EUREKA_HOST: xxx.xx.xx.243
+EUREKA_HOST: 211.xxx.189.77
 EUREKA_PORT: 22002
+# 提供服务端口22001
 SERVER_PORT: 22001
 spring:
   application:
-    name: eureka-server-hotel
+    name: springcloud-eureka-server
 eureka:
   environment: dev
   server:
@@ -17,9 +18,9 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-       defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:22001}/eureka/
+       defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:22002}/eureka/
 server:
   port: ${SERVER_PORT:22001}
 
 logging:
-  file: /var/log/hotel-eureka/inf-eureka.log
+  file: /var/log/springcloud/eureka-server-native1.log
