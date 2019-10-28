@@ -1,4 +1,4 @@
-EUREKA_HOST: 47.xxx.152.93
+EUREKA_HOST: 47.107.xxx.93
 EUREKA_PORT: 22001
 # 提供服务端口22002
 SERVER_PORT: 22002
@@ -6,7 +6,7 @@ spring:
   application:
     name: springcloud-eureka-server
 eureka:
-  environment: dev
+  environment: native
   server:
     enable-self-preservation: false
   instance:
