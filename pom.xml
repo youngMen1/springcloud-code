@@ -26,6 +26,7 @@
         <module>springcloud-hystrix</module>
         <module>springcloud-zuul</module>
         <module>springcloud-config</module>
+        <module>springcloud-sleuth</module>
         <module>springcloud-strong</module>
 
     </modules>
