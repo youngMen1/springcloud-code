@@ -28,6 +28,7 @@
         <module>springcloud-config</module>
         <module>springcloud-sleuth</module>
         <module>springcloud-strong</module>
+        <module>springcloud-gateway</module>
 
     </modules>
 
