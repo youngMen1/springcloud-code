@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -25,6 +26,8 @@ public class StringTest {
 
     @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
     @Test
     public void setString() {
@@ -52,7 +55,7 @@ public class StringTest {
      */
     @Test
     public void setIfAbsentString() {
-        //false  multi1之前已经存在
+        // false  multi1之前已经存在
         System.out.println("结果:" + redisTemplate.opsForValue().setIfAbsent("multi1", "multi1"));
         // true  multi111之前不存在
         System.out.println("结果:" + redisTemplate.opsForValue().setIfAbsent("multi111", "multi111"));
@@ -110,6 +113,25 @@ public class StringTest {
 
         redisTemplate.opsForValue().append("appendTest", "world");
         System.out.println("结果:" + redisTemplate.opsForValue().get("appendTest"));
+    }
+
+    /**
+     * 截取key所对应的value字符串
+     */
+    @Test
+    public void getAppend() {
+        System.out.println("结果:" + redisTemplate.opsForValue().get("appendTest", 0, 5));
+        System.out.println("结果:" + redisTemplate.opsForValue().get("appendTest", 0, -1));
+        System.out.println("结果:" + redisTemplate.opsForValue().get("appendTest", -3, -1));
+    }
+
+    /**
+     * 返回key所对应的value值得长度
+     */
+    @Test
+    public void set() {
+        redisTemplate.opsForValue().set("key", "hello world");
+        System.out.println("结果:" + redisTemplate.opsForValue().size("key"));
     }
 
 
