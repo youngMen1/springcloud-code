@@ -1,0 +1,5 @@
+nohup java -jar /home/java/vickze-auth-server-1.0-SNAPSHOT.jar >> /home/java/myoutput.log 2>&1 &
+nohup java -jar /home/java/vickze-generator-1.0-SNAPSHOT.jar >> /home/java/myoutput.log 2>&1 &
+nohup java -jar /home/java/vickze-gateway-1.0-SNAPSHOT.jar >> /home/java/myoutput.log 2>&1 &
+nohup java -jar /home/java/vickze-sso-1.0-SNAPSHOT.jar >> /home/java/myoutput.log 2>&1 &
+

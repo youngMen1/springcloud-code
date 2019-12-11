@@ -43,10 +43,10 @@ public class LotteryNumberVO {
 //}
 
 
-    public static LotteryNumberVO createUserLotteryNumber(int defaultNumber) {
+    public static LotteryNumberVO createUserLotteryNumber(int defaultNumber,String uid) {
         LotteryNumberVO lotteryNumber = new LotteryNumberVO();
-        lotteryNumber.setUid("50cff40d-1929-4d35-9a24-d9b45a18e83f");
-        lotteryNumber.setMemberId("50cff40d-1929-4d35-9a24-d9b45a18e83f");
+        lotteryNumber.setUid(uid);
+        lotteryNumber.setMemberId(uid);
         lotteryNumber.setReceiveTime(new Date());
         lotteryNumber.setNumber(defaultNumber);
         return lotteryNumber;
