@@ -32,8 +32,8 @@ public class Test {
     public void test() {
         // 65b31241-ea8b-4ad6-a239-4195b4edd4b9
         // 50cff40d-1929-4d35-9a24-d9b45a18e83f
-        String uid = "7371644d-9046-4494-9140-8251fee3ed70";
-        LotteryNumberVO lotteryNumberVOS = LotteryNumberVO.createUserLotteryNumber(1000, uid);
+        String uid = "933db480-a16b-47f1-9e2e-f63a1bac1931";
+        LotteryNumberVO lotteryNumberVOS = LotteryNumberVO.createUserLotteryNumber(10000, uid);
         // 缓存奖品信息
         stringRedisTemplate.opsForValue().set("lottery_number:" + uid, JSON.toJSONString(lotteryNumberVOS));
         String list = stringRedisTemplate.opsForValue().get("lottery_number:" + uid);

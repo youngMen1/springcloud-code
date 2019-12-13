@@ -25,5 +25,13 @@ SDR默认采用的序列化策略有两种，一种是String的序列化策略�
 StringRedisTemplate默认采用的是String的序列化策略，保存的key和value都是采用此策略序列化保存的。
 RedisTemplate默认采用的是JDK的序列化策略，保存的key和value都是采用此策略序列化保存的。
 
+注：TimeUnit是java.util.concurrent包下面的一个类，表示给定单元粒度的时间段
+常用的颗粒度
+TimeUnit.DAYS //天
+TimeUnit.HOURS //小时
+TimeUnit.MINUTES //分钟
+TimeUnit.SECONDS //秒
+TimeUnit.MILLISECONDS //毫秒
+
 ## 参考
 https://www.jianshu.com/p/7bf5dc61ca06

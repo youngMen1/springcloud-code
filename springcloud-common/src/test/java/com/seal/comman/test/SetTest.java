@@ -5,7 +5,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -85,7 +87,7 @@ public class SetTest {
 
 
     /**
-     * key对应的无序集合与otherKey对应的无序集合求交集
+     * key对应的无序集合与otherKey(其他key)对应的无序集合求交集
      */
     @Test
     public void intersect() {
@@ -95,7 +97,7 @@ public class SetTest {
     }
 
     /**
-     * key对应的无序集合与多个otherKey对应的无序集合求交集
+     * key对应的无序集合与多个otherKey(其他key)对应的无序集合求交集
      */
     @Test
     public void newIntersect() {
@@ -109,7 +111,7 @@ public class SetTest {
     }
 
     /**
-     * key无序集合与otherkey无序集合的交集存储到destKey无序集合中
+     * key无序集合与otherkey(其他key)无序集合的交集存储到destKey无序集合中
      */
     @Test
     public void intersectAndStore() {
@@ -120,7 +122,7 @@ public class SetTest {
     }
 
     /**
-     * key对应的无序集合与多个otherKey对应的无序集合求交集存储到destKey无序集合中
+     * key对应的无序集合与多个otherKey(其他key)对应的无序集合求交集存储到destKey无序集合中
      */
     @Test
     public void newIntersectAndStore() {
@@ -132,6 +134,193 @@ public class SetTest {
         strlist.add("setTest3");
         System.out.println("结果:" + redisTemplate.opsForSet().intersectAndStore("setTest", strlist, "destKey2"));
         System.out.println("结果:" + redisTemplate.opsForSet().members("destKey2"));
+    }
+
+    /**
+     * key无序集合与otherKey(其他key)无序集合的并集
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * 结果：[ccc, aaa, ddd, bbb]
+     */
+    @Test
+    public void union() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println("结果:" + redisTemplate.opsForSet().union("setTest", "setTest2"));
+
+    }
+
+
+    /**
+     * key无序集合与多个otherKey(其他key)无序集合的并集
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * setTest3:[xxx, ccc, aaa]
+     * 结果:[ddd, xxx, bbb, aaa, ccc]
+     */
+    @Test
+    public void newUnion() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println("结果:" + redisTemplate.opsForSet().union("setTest", "setTest2"));
+    }
+
+    /**
+     * key无序集合与otherkey(其他key)无序集合的并集存储到destKey无序集合中
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * 4
+     * unionAndStoreTest1:[ccc, aaa, ddd, bbb]
+     */
+    @Test
+    public void unionAndStore() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println(redisTemplate.opsForSet().unionAndStore("setTest", "setTest2", "unionAndStoreTest1"));
+        System.out.println("unionAndStoreTest1:" + redisTemplate.opsForSet().members("unionAndStoreTest1"));
+    }
+
+    /**
+     * key无序集合与多个otherkey(其他key)无序集合的并集存储到destKey无序集合中
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * setTest3:[xxx, ccc, aaa]
+     * 5
+     * unionAndStoreTest2:[ddd, xxx, bbb, aaa, ccc]
+     */
+    @Test
+    public void newUnionAndStore() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println("setTest3:" + redisTemplate.opsForSet().members("setTest3"));
+        List<String> strlist = new ArrayList<>();
+        strlist.add("setTest2");
+        strlist.add("setTest3");
+        System.out.println(redisTemplate.opsForSet().unionAndStore("setTest", strlist, "unionAndStoreTest2"));
+        System.out.println("unionAndStoreTest2:" + redisTemplate.opsForSet().members("unionAndStoreTest2"));
+    }
+
+    /**
+     * key无序集合与otherKey(其他key)无序集合的差集
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * [bbb, ddd]
+     */
+    @Test
+    public void difference() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println(redisTemplate.opsForSet().difference("setTest", "setTest2"));
+    }
+
+    /**
+     * key无序集合与多个otherKey(其他key)无序集合的差集
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * setTest3:[xxx, ccc, aaa]
+     * [bbb, ddd]
+     */
+    @Test
+    public void newDifference() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println("setTest3:" + redisTemplate.opsForSet().members("setTest3"));
+        List<String> strlist = new ArrayList<>();
+        strlist.add("setTest2");
+        strlist.add("setTest3");
+        System.out.println(redisTemplate.opsForSet().difference("setTest", strlist));
+    }
+
+    /**
+     * key无序集合与otherkey(其他key)无序集合的差集存储到destKey无序集合中
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * 2
+     * differenceAndStore1:[bbb, ddd]
+     */
+    @Test
+    public void differenceAndStore() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println(redisTemplate.opsForSet().differenceAndStore("setTest", "setTest2", "differenceAndStore1"));
+        System.out.println("differenceAndStore1:" + redisTemplate.opsForSet().members("differenceAndStore1"));
+    }
+
+    /**
+     * key无序集合与多个otherkey(其他key)无序集合的差集存储到destKey无序集合中
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTest2:[ccc, aaa]
+     * setTest3:[xxx, ccc, aaa]
+     * 2
+     * differenceAndStore2:[bbb, ddd]
+     */
+    @Test
+    public void newDifferenceAndStore() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTest2:" + redisTemplate.opsForSet().members("setTest2"));
+        System.out.println("setTest3:" + redisTemplate.opsForSet().members("setTest3"));
+        List<String> strlist = new ArrayList<>();
+        strlist.add("setTest2");
+        strlist.add("setTest3");
+        System.out.println(redisTemplate.opsForSet().differenceAndStore("setTest", strlist, "differenceAndStore2"));
+        System.out.println("differenceAndStore2:" + redisTemplate.opsForSet().members("differenceAndStore2"));
+    }
+
+    /**
+     * 返回集合中的所有成员
+     * [ddd, bbb, aaa, ccc]
+     */
+    @Test
+    public void members() {
+        System.out.println(redisTemplate.opsForSet().members("setTest"));
+    }
+
+    /**
+     * 随机获取key无序集合中的一个元素
+     * setTest:[ddd, bbb, aaa, ccc]
+     * setTestrandomMember:aaa
+     * setTestrandomMember:bbb
+     */
+    @Test
+    public void randomMember() {
+        System.out.println("setTest:" + redisTemplate.opsForSet().members("setTest"));
+        System.out.println("setTestrandomMember:" + redisTemplate.opsForSet().randomMember("setTest"));
+        System.out.println("setTestrandomMember:" + redisTemplate.opsForSet().randomMember("setTest"));
+        System.out.println("setTestrandomMember:" + redisTemplate.opsForSet().randomMember("setTest"));
+        System.out.println("setTestrandomMember:" + redisTemplate.opsForSet().randomMember("setTest"));
+    }
+
+    /**
+     * 获取多个key无序集合中的元素（去重），count表示个数
+     * randomMembers:[aaa, bbb, ddd, ccc]
+     */
+    @Test
+    public void distinctRandomMembers() {
+        System.out.println("randomMembers:" + redisTemplate.opsForSet().distinctRandomMembers("setTest", 5));
+    }
+
+    /**
+     * 获取多个key无序集合中的元素，count表示个数
+     * randomMembers:[ccc, ddd, ddd, ddd, aaa]
+     */
+    @Test
+    public void randomMembers() {
+        System.out.println("randomMembers:" + redisTemplate.opsForSet().randomMembers("setTest", 5));
+    }
+
+    /**
+     * 遍历set
+     * ddd
+     * bbb
+     * aaa
+     * ccc
+     */
+    @Test
+    public void scan() {
+        Cursor<Object> curosr = redisTemplate.opsForSet().scan("setTest", ScanOptions.NONE);
+        while (curosr.hasNext()) {
+            System.out.println(curosr.next());
+        }
     }
 
 
