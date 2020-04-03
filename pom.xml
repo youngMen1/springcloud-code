@@ -29,6 +29,7 @@
         <module>springcloud-sleuth</module>
         <module>springcloud-strong</module>
         <module>springcloud-gateway</module>
+        <module>springcloud-hystrixdashboard</module>
         <module>springcloud-consul-consumer</module>
         <module>springcloud-consul-provider</module>
     </modules>
