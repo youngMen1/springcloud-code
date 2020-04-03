@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloud-common" />
+        <module name="springcloud-config" />
+        <module name="springcloud-consul-consumer" />
+        <module name="springcloud-consul-provider" />
+        <module name="springcloud-eureka" />
+        <module name="springcloud-feign" />
+        <module name="springcloud-gateway" />
+        <module name="springcloud-hystrix" />
+        <module name="springcloud-rest" />
+        <module name="springcloud-sleuth" />
+        <module name="springcloud-strong" />
+        <module name="springcloud-zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springcloud-code" target="1.8" />
+      <module name="springcloud-common" target="1.8" />
+      <module name="springcloud-config" target="1.8" />
+      <module name="springcloud-consul-consumer" target="1.8" />
+      <module name="springcloud-consul-provider" target="1.8" />
+      <module name="springcloud-eureka" target="1.8" />
+      <module name="springcloud-feign" target="1.8" />
+      <module name="springcloud-gateway" target="1.8" />
+      <module name="springcloud-hystrix" target="1.8" />
+      <module name="springcloud-rest" target="1.8" />
+      <module name="springcloud-sleuth" target="1.8" />
+      <module name="springcloud-strong" target="1.8" />
+      <module name="springcloud-zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
