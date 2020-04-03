@@ -51,11 +51,11 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <!--注册中心-->
-        <dependency>
+        <!--注册中心 因为有consul所以注释掉-->
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!--WEB-->
         <dependency>

@@ -1,0 +1,12 @@
+
+server:
+  port: 8767
+spring:
+  application:
+    name: consul-consumer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: consul-consumer
