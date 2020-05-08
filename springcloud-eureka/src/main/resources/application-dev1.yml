@@ -7,16 +7,21 @@ spring:
 eureka:
   environment: dev
   server:
+    # 关闭自我保护机制，及时剔除无效服务
     enable-self-preservation: false
   instance:
+      # 配置服务注册中心地址
       hostname: localhost
       status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
       prefer-ip-address: true
       instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
+    # 作为服务注册中心，允许本应用向自己检索服务
     fetch-registry: true
+    # 作为服务注册中心，允许本应用向自己注册服务
     register-with-eureka: true
     service-url:
+      # 设置服务注册中心服务注册地址
        defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:22002}/eureka/
 server:
   port: ${SERVER_PORT:22001}
