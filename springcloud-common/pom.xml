@@ -21,7 +21,7 @@
     <properties>
         <java.version>1.8</java.version>
         <kaptcha.version>0.0.9</kaptcha.version>
-        <jackson-databind.version>2.9.10.3</jackson-databind.version>
+        <jackson-databind.version>2.12.6.1</jackson-databind.version>
         <guava-version>23.0</guava-version>
     </properties>
 
